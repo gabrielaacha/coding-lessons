@@ -159,3 +159,50 @@ let newRevStr = str3 // you don't need a semicolon here
   .reverse()
   .join("");
 console.log(newRevStr);
+
+//============================RECAP==290120====================================================================================
+
+function display(random) {
+  // let random = 0; // NEVER DO THIS // this is mistake, never declare the parameter as a variable // you are not meant to reassign, only modify, multiply, etc..
+  let newArr = random.toLowerCase().split(" "); // this is correct, you are just modifying not assigning new value
+  console.log(newArr);
+  return newArr;
+  global += 2;
+}
+let newArr = 5;
+console.log(display("Hi ma name")); // this is my return;
+console.log(newArr); // this was local var for display function
+
+//----------------------------------
+
+// function display(random) {
+//     // let random = 0; // NEVER DO THIS // this is mistake, never declare the parameter as a variable // you are not meant to reassign, only modify, multiply, etc..
+//     // let newArr = random.toLowerCase().split(""); // this is correct, you are just modifying not assigning new value
+//     // return newArr;
+//     for (let i = 0; 0 < kids.length; i++) {
+
+//     }
+//   }
+//   let newArr = 5;
+//   display("ALi", "Nancy", "Olga");
+//   console.log(newArr); // this was local var for display function
+
+//==============================RECAP==030220============================================================================
+
+//----loops----------------------------------------------------------------
+for (let i = 10; i >= 0; i--) {
+  let result = i * 3;
+  console.log(`${i} * 3 = ${result}`);
+}
+
+//-----------if else------------------------------------------------------
+let num = 10;
+if (num == 20) {
+  console.log("20 is cool");
+} else {
+  console.log("Nooooooo");
+}
+//-----------------------------array--------------------------------------
+// multiple values in one variable
+const arr = [3, 4, 67, 6];
+console.log(arr[2]);

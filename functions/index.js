@@ -275,3 +275,205 @@ const add = () => {
 add(); // this is the function call, without it is not executing at all // functions, array and objects always needs const
 
 // variables in function
+
+//==========================270120=============================================================
+
+//-----spread syntax (...) [...array]---------------------------------------------------------------
+
+let array = [1, 3, 45, 6];
+let copyArray = [...array]; // you can also write just = array but when working with objects better this way
+console.log(copyArray);
+
+//---------------------------------------------------------------------------------------------------
+
+function sum(...args) {
+  // stands for arguments
+  let array = args; // better to use args than x
+
+  console.log(array);
+}
+sum(3, 4, 3, 5, 6, 7, 8, 2, 3, 2, 23, 2, 3, 54, 6, 5, 56, 8);
+
+//---------------------------------------------------------------------------------------------------
+
+// add all the number of the array
+
+function sum(...args) {
+  // stands for arguments
+  let array = args; // better to use args than x
+  let result = 0;
+  const reducer = (accumulator, currentValue) => accumulator + currentValue;
+  console.log(array.reduce(reducer));
+  return `the sum is §{result}`;
+}
+sum(3, 4, 3, 5, 6, 7, 8, 2, 3, 2, 23, 2, 3, 54, 6, 5, 56, 8);
+sum(7, 88, 98, 9);
+
+//---------------------------------------------------------------------------------------------------
+
+function sum2(...args) {
+  // you use this whenever you don't know what the length of the array is
+  // stands for arguments
+  let array2 = args; // better to use args than x
+  let result2 = 0;
+  const reducer2 = (a, b) => a + b;
+  console.log(array2.reduce(reducer2));
+  return `the sum is §{result}`;
+}
+sum2(3, 4, 3, 5, 6, 7, 8, 2, 3, 2, 23, 2, 3, 54, 6, 5, 56, 8);
+sum2(7, 88, 98, 9);
+
+//---------------------------------------------------------------------------------------------------
+
+// when i have array i need loop
+function sum3(...args) {
+  // stands for arguments
+  let array3 = args; // better to use args than x
+  let result3 = 0;
+  for (let i = 0; i < array.length; i++) {
+    result3 += array[i];
+  }
+  return `the sum is ${result3}`;
+}
+console.log(sum3(3, 4, 3, 5, 6, 7, 8, 2, 3, 2, 23, 2, 3, 54, 6, 5, 56, 8));
+console.log(sum3(7, 88, 98, 9));
+
+// function that will receive unknown amount of VREyeParameters, console log how many parameters the user entered:
+
+function sum4(...args) {
+  console.log(...args);
+}
+function sum5(...args) {
+  let array4 = args;
+  for (var i = 0; i < array4.length; i++) {
+    console.log(array4[i]);
+  }
+}
+
+//----Hadi-----------------------------------------------------------------------
+
+const howManyArgs = args => console.log(args.length);
+howManyArgs(23, 54, 32, 123);
+
+//------------------------------self-invoqued function-----------------------------
+
+(function add() {
+  console.log("Hi");
+})();
+
+//------------------------------------------------------------------------------------
+
+//========================03022020===================================================
+
+// functions inside functions
+function main(num, num2) {
+  // outer function
+  function second(n) {
+    // inner function
+    return n * n; // 9
+  } // 9    // 16
+  return second(num) + second(num2);
+}
+
+console.log(main(3, 4));
+
+// nested scopes : accessing outer global variables
+var nice = true; // here i am declaring the variable outside of the scope, i can use it everywhere, in the inner and outer function
+const outerFunction = (x, y) => {
+  let big = true;
+  console.log(big + "outerFunction");
+
+  const innerFunction = num => {
+    big = false; // i am not able to access that outside of the scope
+    nice = false;
+    console.log(big + "innerFunction");
+    return num + 10;
+  };
+  return innerFunction(x) + innerFunction(y);
+};
+console.log(outerFunction(3, 4)); // you would get two results because the function is called twice
+console.log(nice);
+
+// closure
+// you wanna access a variable that is global but you don't need anyone to do it
+// most common way to secure information
+var number = 10; // this declaration has to be outside of the function
+function fun() {
+  return number + number;
+}
+console.log(fun());
+console.log(number);
+
+//---------------------------------
+
+function add() {
+  var counter = 0; // you move the counter inside the function // it is more secure, nobody can change it
+  counter += 1; // or you can have counter++ instead
+  return counter;
+}
+
+add(); // 1
+add(); // 2
+add(); // 3
+console.log(add());
+
+// anonymous function
+// invoking == calling
+const add2 = (() => {
+  // you can also add a value to this function
+  var counter = 0;
+  return function() {
+    counter++;
+    return counter; // this function is anonymous and it is returning another function
+  };
+})();
+
+add2(); // 1
+add2(); // 2
+add2(); // 3
+console.log(add());
+
+//----------------------
+
+// const add = (() => {}) () // this is a self invoked function
+// this function will call itself automatically all the time
+
+const add3 = (() => {
+  let counter = 0;
+  return () => {
+    counter++;
+    return counter;
+  };
+})();
+add3(); //1
+
+//-----------------------------
+
+(function display() {
+  let x = 0;
+  console.log("hi");
+  return () => {
+    x++;
+    return x;
+  };
+})(); // function call right after the function declaration // good to secure information // invoking is like calling itself // parenthesis () is a function call immediately after the function
+// this is used mainly for security, the function works same as when it is not self invoked
+// common to use it for shopping or for when the user has to amend info, etc
+// it is theoretically a call back function but in this context it is called closure because it is securing the global value so no one can amend
+// display();
+
+//-------------------------
+
+// SIAF self invoked anonymous functions // closed to itself and called immediately
+// this will reder one time and immediately
+(function() {
+  console.log("Hi");
+})();
+// not anonymous
+// two ways + passing parameter
+// this i would use if i need to recur to the function more times
+const sum = ((x, y) => {
+  return x + y; // the value is from return
+})(5, 6); // now you are assigning a value to the function and thus to the variable
+// useful for payments with cards etc...
+console.log(sum);
