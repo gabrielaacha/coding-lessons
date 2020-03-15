@@ -1,6 +1,9 @@
 // anything in javascript is an object /7 there are three types of formulating objects
 //..................
 // keys, properties : value (sometimes named methods instead of property) / key is how variables are called here // lettering
+console.log(
+  "--------------------------keys-properties--------------------------------------------------"
+);
 const o = {
   1: "Hadi",
   2: "Ali",
@@ -22,6 +25,9 @@ let aliLastName = "something";
 // we do this to look for storage keeping related data together
 
 //........const <namespace> = { <key> : <value 1>, <key2>: <value 2>,...} // assigning.....................................
+console.log(
+  "--------------const <namespace> = { <key> : <value 1>, <key2>: <value 2>,...}-------------------------------------------------"
+);
 const object = {
   color: "red",
   size: "big",
@@ -30,6 +36,9 @@ const object = {
 }; // key column value data
 
 //....accessing properties with [bracket notation].........................................................................
+console.log(
+  "--------------accessing-properties-with--bracket-notation-------------------------------------------------"
+);
 const car = {};
 console.log(car);
 car["name"] = "Ford";
@@ -39,6 +48,9 @@ console.log(car);
 //..................
 
 //.....Accessing properties with [dot notation].............................................................................
+console.log(
+  "--------------------------accessing-properties-with-dot-notation--------------------------------------------------"
+);
 car.age = 22; // there is no difference between bracket notation and dot notation
 car.age = 44; // this will overwrite the previous age
 console.log(car); // expected outcome:
@@ -59,11 +71,19 @@ console.log(car);
 
 //...................for.............................................................................................
 // we have fof for objects but it looks a bit different than what we saw so far
+console.log(
+  "-----------------------------------------for---------------------------------------------------------"
+);
+
 for (let prop in car) {
   // prop for properties, we can name it as we want
   console.log(`car.${prop} : ${car[prop]}`);
 }
 //...............object.entries()...................................................................................
+console.log(
+  "--------------object-entries-------------------------------------------------"
+);
+
 const person = {
   name: "Zain",
   age: 20,
@@ -79,24 +99,44 @@ const person = {
 };
 
 //................object.keys.......................................................................................
+console.log(
+  "-------------------------object-keys-------------------------------------------------"
+);
+
 console.log(Object.keys(person)); // expected outcome : [ 'name', 'age', 'birthYear' ]
 //..................
 // to access the key names and not the values :
+console.log(
+  "-----------------------object-values-------------------------------------------------"
+);
+
 console.log(Object.values(person)); // expected outcome ; [ 'Zain', 20, 2000 ]
 //..................
 // if I wanna access both of them : object.entries()
+console.log(
+  "-------------for-loop-access-both-of-them------------------------------------------------"
+);
+
 for (let [key, value] of Object.entries(person)) {
   // now we have for of (instead of for in)
   console.log(`${key} : ${value}`);
 }
 
 //.................. methods.........................................................................................
+console.log(
+  "-------------------------------methods----------------------------------------------------------"
+);
+
 // when the property is a function you call it methods
 person.print(); // this is the function call for the previous function // print: function() {}
 console.log(person.old());
 
 //.......object assign....................................................................................................
 // to copy two objects and put them in another object
+console.log(
+  "--------------copy-two-objects-and-put-them-in-another-object-------------------------------------------------"
+);
+
 const obj1 = { 1: 2, 2: 300 }; // this is the source
 const obj2 = { 1: 4, 3: 3224 }; // this is the target
 const obj3 = { 2: 450, 5: 980 }; //this turns into target and will replace any previous properties with same name
@@ -105,6 +145,10 @@ console.log(totalObj);
 // expected outcome: { '1': 4, '2': 450, '3': 3224, '4': 55, '5': 980 }
 
 //..........Object.defineProperty().....................................................................................
+console.log(
+  "--------------object-define-property-------------------------------------------------"
+);
+
 Object.defineProperty(person, "birthDay", {
   // calling my object, 1st parameter is object name, the second is the prop name and the last has the value of the property that i am creating
   value: 20,
@@ -114,6 +158,9 @@ Object.defineProperty(person, "birthDay", {
 console.log(person.birthDay);
 
 //..........Object.defineProperties()......................................................................................
+console.log(
+  "--------------object-define-properties-------------------------------------------------"
+);
 Object.defineProperties(person, {
   // first parameter is the object and second parameter the values you are passing
   p1: {
